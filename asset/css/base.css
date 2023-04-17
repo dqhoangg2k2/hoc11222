@@ -1,26 +1,25 @@
-* {
-    /* margin: 0;
-    padding: 0; */
+*{
     box-sizing: border-box;
+   
 }
+ 
 
-:root {
-    --primary-color:#f6442e ;
+:root{
+    --primary-color:#f6442e;
     --white-color:#fff;
     --black-color:#000;
     --text-color:#333;
-    --border-color:#dbdbdb;
-    --star-gold-color:#ffce3e;
+    --border-color:#ce9797;
+    --star-gold-color:#90ba94;
     --navbar-heigth: 34px;
     --header-height: 120px;
     --header-width-search-height: calc(var(--header-height)-var(--navbar-heigth));
 }
-
 html {
     font-size: 12px;
+    line-height: 1.6;
     font-family: 'Roboto', sans-serif;
 }
-
 /* responsive */
 .grid {
     width: 1200px;
@@ -36,7 +35,6 @@ html {
     margin-left: -5px;
     margin-right: -5px;
 }
-
 /* text */
 .grid__column-2{
     padding-left:5px;
@@ -53,47 +51,171 @@ html {
     padding-right:5px;
     width:83.3334%;
 }
-/* animation_QR */
-@keyframes fadeIN {
-    from {          /* từ from đến to */
-        opacity: 0;      /* độ đậm nhạt */
-    }
-    to {
-        opacity: 1;
-    }
-}
-/* animation_Notify */
-@keyframes headerNotifyGrowth {
-    from {
-        opacity: 0;
-        transform: scale(0);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-/* Modal  */
 
-.modal{
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;   
+/* animation */
+@keyframes fadeIn {
+    from{
+        opacity:0;
+
+    }
+    to{
+        opacity:2;
+    }
 }
-/* Button style  */
+@keyframes growth {
+    from{
+       transform: scale(var(--growth-form));
+
+    }
+    to{
+       transform: scale(var(--growth-to));
+    }
+}
+/* modal */
+.modal{
+    position:fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    display:flex;
+    animation:fadeIn linear 0.1s;
+
+}
+.modal_overlay{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background-color:rgba(0, 0, 0, 0.4);
+    
+}
+.modal_body{
+    /* width:400px; */
+    /* height:400px; */
+    --growth-form:0.7;
+    --growth-form:1;
+    margin:auto;
+    position:relative;
+    z-index:1;
+    animation: growth linear 0.1s;
+   
+
+}
+/* button */
 .btn{
-    min-width: 142px;
-    height: 36px;
+    min-width:124px;
+    height:36px;
+    border:none;
     text-decoration: none;
-    border-radius: 3px;
-    font-size: 1.5rem;
-    padding: 0 12px;
-    outline: none;
+    border-radius:2px;
+    font-size:1.2rem;
+    padding:0 12px;
+    outline:none;
     cursor: pointer;
     color: var(--text-color);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    line-height:0;
+
+
 }
-.btn.btn--normal:hover{
-    background-color: rgba(0,0,0, 0.05);
+
+.btn.btn-normal:hover{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.btn.btn-size-s{
+    height:34px;
+    font-size: 12px;
+    padding:0 8px;
+
+}
+.btn.btn--primary{
+    background-color: var(--primary-color);
+    color:var(--white-color);
+    
+}
+.btn.btn--dissable{
+    cursor: default;
+    background-color: #b9b3b3;
+    color: #626060;
+}
+/* selection */
+.select-input{
+    position:relative;
+    min-width:200px;
+    height:36px;
+    padding:0 12px;
+    background-color: var(--white-color);
+    border-radius: 2px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.select-input:hover .select-input_list{
+    display:block;
+}
+.select-input_label{
+    font-size: 1.4rem;
+}
+.select-input_icon{
+    font-size: 1.4rem;
+    color: #666565;
+    position: relative;
+    top: 1px;
+}
+.select-input_list{
+    position:absolute;
+    left:0;
+    right:0;
+    top:25px;
+    border-radius: 2px;
+    background-color: var(--white-color);
+    list-style:none;
+    padding: 8px 16px;
+    z-index: 1;
+    display: none;
+}
+.select-input_link{
+    font-size:1.4rem;
+    color: var(--text-color);
+    text-decoration: none;
+    display:block;
+    padding:4px 0;
+}
+.select-input_link:hover{
+    color: var(--primary-color);
+}
+/* pagination */
+.pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none
+}
+.pagination-item{
+    margin: 0 12px;
+}
+.pagination-item--active.pagination-item_link{
+    background-color: var(--primary-color);
+    color:var(--white-color);
+}
+.pagination-item--active.pagination-item_link:hover{
+    background-color:#ee624f
+}
+.pagination-item_link{
+    --height: 30px;
+    line-height: var(--height);
+    height: var(--height);
+    min-width: 40px;
+    text-decoration: none;
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: #939393;
+    border-radius: 2px;
+    display: block;
+    text-align: center;
+}
+.pagination-item_icon{
+
 }
